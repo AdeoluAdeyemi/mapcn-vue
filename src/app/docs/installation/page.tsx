@@ -7,7 +7,9 @@ import {
 } from "../_components/docs";
 import { CodeBlock } from "../_components/code-block";
 
-const installCode = `npx shadcn@latest add https://mapcn.dev/maps/map.json`;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "site-url-here";
+
+const installCode = `npx shadcn@latest add ${siteUrl}/maps/map.json`;
 
 const usageCode = `import { Map, MapControls } from "@/components/ui/map";
 import { Card } from "@/components/ui/card";
