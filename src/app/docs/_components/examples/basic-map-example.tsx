@@ -1,5 +1,3 @@
-"use client";
-
 import { Map } from "@/registry/map";
 
 export function BasicMapExample() {

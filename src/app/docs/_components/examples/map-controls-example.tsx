@@ -1,5 +1,3 @@
-"use client";
-
 import { Map, MapControls } from "@/registry/map";
 
 export function MapControlsExample() {
