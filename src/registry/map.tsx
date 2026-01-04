@@ -122,15 +122,11 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   useEffect(() => {
     if (!mapInstance) return;
 
-    const rafId = requestAnimationFrame(() => {
-      setIsStyleLoaded(false);
-      mapInstance.setStyle(
-        resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light,
-        { diff: true }
-      );
-    });
-
-    return () => cancelAnimationFrame(rafId);
+    setIsStyleLoaded(false);
+    mapInstance.setStyle(
+      resolvedTheme === "dark" ? mapStyles.dark : mapStyles.light,
+      { diff: true }
+    );
   }, [mapInstance, resolvedTheme, mapStyles]);
 
   const isLoading = !isLoaded || !isStyleLoaded;
