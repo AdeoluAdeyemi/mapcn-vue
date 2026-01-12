@@ -6,7 +6,7 @@ interface MarkerLabelProps {
   position?: 'top' | 'bottom'
 }
 
-const props = withDefaults(defineProps<MarkerLabelProps>(), {
+withDefaults(defineProps<MarkerLabelProps>(), {
   position: 'top'
 })
 

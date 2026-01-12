@@ -7,7 +7,7 @@ interface ExampleCardProps {
   delay?: string
 }
 
-const props = withDefaults(defineProps<ExampleCardProps>(), {
+withDefaults(defineProps<ExampleCardProps>(), {
   label: '',
   delay: ''
 })

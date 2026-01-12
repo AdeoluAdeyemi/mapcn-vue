@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MapLibreGL from 'maplibre-gl'
-import { ref, inject, onMounted, onUnmounted, watch, computed, type Ref, type ComputedRef } from 'vue'
+import { ref, inject, onMounted, onUnmounted, type Ref, type ComputedRef } from 'vue'
 import { Plus, Minus, Locate, Maximize, Loader2 } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 

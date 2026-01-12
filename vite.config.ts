@@ -9,5 +9,17 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'maplibre-gl': ['maplibre-gl'],
+          'lucide': ['lucide-vue-next'],
+          'vendor': ['vue', 'vue-router', '@vueuse/core']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 600
   }
 })

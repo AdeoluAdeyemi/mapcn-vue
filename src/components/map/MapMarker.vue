@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import MapLibreGL, { type MarkerOptions } from 'maplibre-gl'
-import { ref, inject, onMounted, onUnmounted, provide, watch, type Ref, type ComputedRef } from 'vue'
+import MapLibreGL from 'maplibre-gl'
+import { ref, inject, onUnmounted, provide, watch, type Ref, type ComputedRef } from 'vue'
 
 interface MapMarkerProps {
   longitude: number
   latitude: number
   draggable?: boolean
-  offset?: [number, number] | { x: number; y: number }
+  offset?: [number, number]
   rotation?: number
   rotationAlignment?: 'map' | 'viewport' | 'auto'
   pitchAlignment?: 'map' | 'viewport' | 'auto'

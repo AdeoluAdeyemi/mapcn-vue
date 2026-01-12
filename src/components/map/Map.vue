@@ -3,7 +3,6 @@ import MapLibreGL, { type ProjectionSpecification, type MapOptions } from 'mapli
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { ref, onMounted, onUnmounted, provide, watch, computed } from 'vue'
 import { useDark } from '@vueuse/core'
-import { cn } from '@/lib/utils'
 
 type MapStyleOption = string | MapLibreGL.StyleSpecification
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MapLibreGL from 'maplibre-gl'
-import { inject, onMounted, onUnmounted, watch, computed, ref, type Ref, type ComputedRef } from 'vue'
+import { inject, onUnmounted, watch, computed, ref, type Ref, type ComputedRef } from 'vue'
 
 type GeoJSONFeature = GeoJSON.Feature<GeoJSON.Point, any>
 type FeatureCollection = GeoJSON.FeatureCollection<GeoJSON.Point, any>

@@ -10,7 +10,7 @@ const tocSections = [
   { id: 'basic-example', title: 'Basic Example' }
 ]
 
-const geojsonData: GeoJSON.FeatureCollection = {
+const geojsonData: GeoJSON.FeatureCollection<GeoJSON.Point> = {
   type: 'FeatureCollection',
   features: Array.from({ length: 100 }, (_, i) => ({
     type: 'Feature',
@@ -23,7 +23,7 @@ const geojsonData: GeoJSON.FeatureCollection = {
       ]
     }
   }))
-} as GeoJSON.FeatureCollection
+}
 
 const codeExample = `<script setup lang="ts">
 import { Map, MapClusterLayer, MapControls } from '@/components/map'

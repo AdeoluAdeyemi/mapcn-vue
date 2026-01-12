@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Map, MapMarker, MarkerContent, MarkerPopup, MarkerTooltip, MarkerLabel } from '@/components/map'
+import { Map, MapMarker, MarkerPopup, MarkerTooltip } from '@/components/map'
 import DocsSidebar from '@/components/DocsSidebar.vue'
 import DocsToc from '@/components/DocsToc.vue'
 import CodeBlock from '@/components/CodeBlock.vue'

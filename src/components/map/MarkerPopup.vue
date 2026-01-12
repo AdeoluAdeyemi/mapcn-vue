@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MapLibreGL, { type PopupOptions } from 'maplibre-gl'
+import MapLibreGL from 'maplibre-gl'
 import { ref, inject, onMounted, onUnmounted, watch, type Ref } from 'vue'
 import { X } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
