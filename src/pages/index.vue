@@ -10,7 +10,7 @@ import {
   DeliveryExample
 } from '@/components/examples'
 
-const installCommand = 'npx shadcn-vue@latest add map -r https://mapcn-vue-ts.vercel.app/registry'
+const installCommand = 'npx shadcn-vue@latest add https://mapcn-vue-ts.vercel.app/registry/map.json'
 const copied = ref(false)
 
 const copyToClipboard = async () => {
