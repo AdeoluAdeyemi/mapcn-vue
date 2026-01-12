@@ -19,10 +19,6 @@ const props = withDefaults(defineProps<MapProps & Partial<Omit<MapOptions, 'cont
   zoom: 2
 })
 
-const emit = defineEmits<{
-  load: [map: MapLibreGL.Map]
-}>()
-
 const defaultStyles = {
   dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
   light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
@@ -87,7 +83,6 @@ onMounted(() => {
 
   const loadHandler = () => {
     isLoaded.value = true
-    emit('load', map)
   }
 
   map.on('load', loadHandler)

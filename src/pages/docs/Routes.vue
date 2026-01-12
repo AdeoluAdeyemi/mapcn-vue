@@ -7,7 +7,7 @@ import CodeBlock from '@/components/CodeBlock.vue'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
-import { Clock, Route } from 'lucide-vue-next'
+import { Clock, Route, Copy, Check } from 'lucide-vue-next'
 
 const tocSections = [
   { id: 'basic-route', title: 'Basic Route' },
@@ -68,8 +68,12 @@ const formatDistance = (meters: number) => {
   return `${(meters / 1000).toFixed(1)} km`
 }
 
-onMounted(() => {
-  fetchRoutes()
+onMounted(async () => {
+  try {
+    await fetchRoutes()
+  } catch (error) {
+    console.error('Failed to fetch routes on mount:', error)
+  }
 })
 
 const basicRouteCode = `<script setup lang="ts">
@@ -162,6 +166,26 @@ onMounted(() => {
     <MapControls show-zoom />
   </Map>
 </template>`
+
+// Copy state for each code section
+const copiedBasic = ref(false)
+const copiedPlanning = ref(false)
+
+const copyBasicRoute = async () => {
+  await navigator.clipboard.writeText(basicRouteCode)
+  copiedBasic.value = true
+  setTimeout(() => {
+    copiedBasic.value = false
+  }, 2000)
+}
+
+const copyRoutePlanning = async () => {
+  await navigator.clipboard.writeText(routePlanningCode)
+  copiedPlanning.value = true
+  setTimeout(() => {
+    copiedPlanning.value = false
+  }, 2000)
+}
 </script>
 
 <template>
@@ -189,9 +213,17 @@ onMounted(() => {
 
         <Card>
           <Tabs default-value="preview">
-            <TabsList class="w-full justify-start border-b rounded-none">
+            <TabsList class="w-full justify-start border-b rounded-none relative">
               <TabsTrigger value="preview">Preview</TabsTrigger>
               <TabsTrigger value="code">Code</TabsTrigger>
+              <button 
+                class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                @click="copyBasicRoute"
+                aria-label="Copy code"
+              >
+                <Check v-if="copiedBasic" class="size-3.5 text-green-500" />
+                <Copy v-else class="size-3.5 text-muted-foreground" />
+              </button>
             </TabsList>
             
             <TabsContent value="preview" class="mt-0">
@@ -228,77 +260,85 @@ onMounted(() => {
               <p>Display multiple route options and let users select between them. This example fetches real driving directions from the <a target="_blank" rel="noopener noreferrer" class="font-medium text-foreground underline underline-offset-4 hover:text-primary transition-colors" href="https://project-osrm.org/">OSRM API</a>. Click on a route or use the buttons to switch.</p>
             </div>
 
-        <Card>
-          <Tabs default-value="preview">
-            <TabsList class="w-full justify-start border-b rounded-none">
-              <TabsTrigger value="preview">Preview</TabsTrigger>
-              <TabsTrigger value="code">Code</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="preview" class="mt-0">
-              <div class="relative h-[500px] w-full overflow-hidden">
-                <Map :center="[4.7, 52.1]" :zoom="8.5">
-                  <MapRoute
-                    v-for="(route, i) in routes"
-                    :key="i"
-                    :coordinates="route.coordinates"
-                    :color="i === selectedRouteIndex ? '#3b82f6' : '#94a3b8'"
-                    :width="i === selectedRouteIndex ? 4 : 2"
-                    :opacity="i === selectedRouteIndex ? 0.9 : 0.5"
-                    @click="selectedRouteIndex = i"
-                  />
-                  
-                  <MapMarker :longitude="start[0]" :latitude="start[1]">
-                    <div class="relative cursor-pointer">
-                      <div class="size-5 rounded-full bg-green-500 border-2 border-white shadow-lg"></div>
-                      <div class="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium text-foreground bottom-full mb-1">
-                        Amsterdam
-                      </div>
-                    </div>
-                  </MapMarker>
-                  
-                  <MapMarker :longitude="end[0]" :latitude="end[1]">
-                    <div class="relative cursor-pointer">
-                      <div class="size-5 rounded-full bg-red-500 border-2 border-white shadow-lg"></div>
-                      <div class="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium text-foreground top-full mt-1">
-                        Rotterdam
-                      </div>
-                    </div>
-                  </MapMarker>
-                  
-                  <MapControls show-zoom />
-                </Map>
-
-                <div v-if="!isLoading && routes.length" class="absolute top-3 left-3 flex flex-col gap-2">
-                  <Button
-                    v-for="(route, i) in routes"
-                    :key="i"
-                    :variant="i === selectedRouteIndex ? 'default' : 'secondary'"
-                    size="sm"
-                    @click="selectedRouteIndex = i"
-                    class="justify-start gap-3"
+            <Card>
+              <Tabs default-value="preview">
+                <TabsList class="w-full justify-start border-b rounded-none relative">
+                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="code">Code</TabsTrigger>
+                  <button 
+                    class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                    @click="copyRoutePlanning"
+                    aria-label="Copy code"
                   >
-                    <div class="flex items-center gap-1.5">
-                      <Clock class="size-3.5" />
-                      <span class="font-medium">{{ formatDuration(route.duration) }}</span>
+                    <Check v-if="copiedPlanning" class="size-3.5 text-green-500" />
+                    <Copy v-else class="size-3.5 text-muted-foreground" />
+                  </button>
+                </TabsList>
+                
+                <TabsContent value="preview" class="mt-0">
+                  <div class="relative h-[500px] w-full overflow-hidden">
+                    <Map :center="[4.7, 52.1]" :zoom="8.5">
+                      <MapRoute
+                        v-for="(route, i) in routes"
+                        :key="i"
+                        :coordinates="route.coordinates"
+                        :color="i === selectedRouteIndex ? '#3b82f6' : '#94a3b8'"
+                        :width="i === selectedRouteIndex ? 4 : 2"
+                        :opacity="i === selectedRouteIndex ? 0.9 : 0.5"
+                        @click="selectedRouteIndex = i"
+                      />
+                      
+                      <MapMarker :longitude="start[0]" :latitude="start[1]">
+                        <div class="relative cursor-pointer">
+                          <div class="size-5 rounded-full bg-green-500 border-2 border-white shadow-lg"></div>
+                          <div class="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium text-foreground bottom-full mb-1">
+                            Amsterdam
+                          </div>
+                        </div>
+                      </MapMarker>
+                      
+                      <MapMarker :longitude="end[0]" :latitude="end[1]">
+                        <div class="relative cursor-pointer">
+                          <div class="size-5 rounded-full bg-red-500 border-2 border-white shadow-lg"></div>
+                          <div class="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium text-foreground top-full mt-1">
+                            Rotterdam
+                          </div>
+                        </div>
+                      </MapMarker>
+                      
+                      <MapControls show-zoom />
+                    </Map>
+
+                    <div v-if="!isLoading && routes.length" class="absolute top-3 left-3 flex flex-col gap-2">
+                      <Button
+                        v-for="(route, i) in routes"
+                        :key="i"
+                        :variant="i === selectedRouteIndex ? 'default' : 'secondary'"
+                        size="sm"
+                        @click="selectedRouteIndex = i"
+                        class="justify-start gap-3"
+                      >
+                        <div class="flex items-center gap-1.5">
+                          <Clock class="size-3.5" />
+                          <span class="font-medium">{{ formatDuration(route.duration) }}</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs opacity-80">
+                          <Route class="size-3" />
+                          {{ formatDistance(route.distance) }}
+                        </div>
+                        <span v-if="route.isFastest" class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+                          Fastest
+                        </span>
+                      </Button>
                     </div>
-                    <div class="flex items-center gap-1.5 text-xs opacity-80">
-                      <Route class="size-3" />
-                      {{ formatDistance(route.distance) }}
-                    </div>
-                    <span v-if="route.isFastest" class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
-                      Fastest
-                    </span>
-                  </Button>
-                </div>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="code" class="mt-0">
-              <CodeBlock :code="routePlanningCode" lang="vue" />
-            </TabsContent>
-          </Tabs>
-        </Card>
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="code" class="mt-0">
+                  <CodeBlock :code="routePlanningCode" lang="vue" />
+                </TabsContent>
+              </Tabs>
+            </Card>
           </section>
         </div>
 

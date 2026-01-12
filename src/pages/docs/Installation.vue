@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
 import DocsSidebar from '@/components/DocsSidebar.vue'
 import DocsToc from '@/components/DocsToc.vue'
 import CodeBlock from '@/components/CodeBlock.vue'
-import { Copy } from 'lucide-vue-next'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { Copy, Check } from 'lucide-vue-next'
 
 const tocSections = [
   { id: 'prerequisites', title: 'Prerequisites' },
@@ -10,7 +13,16 @@ const tocSections = [
   { id: 'usage', title: 'Usage' }
 ]
 
-const installCommand = `npx shadcn-vue@latest add https://mapcn.dev/maps/map.json`
+const installCommand = `npx shadcn-vue@latest add https://mapcn-vue-ts.vercel.app/registry.json`
+const copied = ref(false)
+
+const copyToClipboard = async () => {
+  await navigator.clipboard.writeText(installCommand)
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+  }, 2000)
+}
 
 const usageCode = `<script setup lang="ts">
 import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
@@ -53,8 +65,13 @@ import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
               
               <div class="w-full rounded-lg border overflow-hidden">
                 <div class="flex items-center justify-end border-b bg-muted/30 px-2 h-9">
-                  <button class="p-1.5 rounded hover:bg-muted transition-colors" aria-label="Copy code">
-                    <Copy class="size-3.5 text-muted-foreground" />
+                  <button 
+                    class="p-1.5 rounded hover:bg-muted transition-colors" 
+                    @click="copyToClipboard"
+                    aria-label="Copy code"
+                  >
+                    <Check v-if="copied" class="size-3.5 text-green-500" />
+                    <Copy v-else class="size-3.5 text-muted-foreground" />
                   </button>
                 </div>
                 <div class="p-4 overflow-auto text-sm bg-muted/20">
@@ -71,16 +88,31 @@ import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
             <div class="text-foreground/80 text-base sm:text-[15px] leading-7 space-y-3 [&_p]:leading-7">
               <p>Import and use the map component:</p>
               
-              <div class="w-full rounded-lg border overflow-hidden">
-                <div class="flex items-center justify-end border-b bg-muted/30 px-2 h-9">
-                  <button class="p-1.5 rounded hover:bg-muted transition-colors" aria-label="Copy code">
-                    <Copy class="size-3.5 text-muted-foreground" />
-                  </button>
+              <Tabs default-value="preview" class="w-full">
+                <div class="w-full rounded-lg border overflow-hidden">
+                  <TabsList class="w-full justify-start border-b rounded-none">
+                    <TabsTrigger value="preview">Preview</TabsTrigger>
+                    <TabsTrigger value="code">Code</TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="preview" class="mt-0">
+                    <div class="relative h-[400px] w-full overflow-hidden">
+                      <Map :center="[0, 0]" :zoom="2">
+                        <MapMarker :longitude="0" :latitude="0">
+                          <MarkerContent />
+                        </MapMarker>
+                        <MapControls show-zoom />
+                      </Map>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="code" class="mt-0">
+                    <div class="p-4 overflow-auto text-sm bg-muted/20 [&_pre]:bg-transparent! [&_code]:bg-transparent!">
+                      <CodeBlock :code="usageCode" lang="vue" />
+                    </div>
+                  </TabsContent>
                 </div>
-                <div class="p-4 overflow-auto text-sm bg-muted/20 [&_pre]:bg-transparent! [&_code]:bg-transparent!">
-                  <CodeBlock :code="usageCode" lang="vue" />
-                </div>
-              </div>
+              </Tabs>
             </div>
           </section>
 

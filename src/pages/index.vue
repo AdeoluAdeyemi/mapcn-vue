@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { Copy, Check } from 'lucide-vue-next'
 import {
   AnalyticsExample,
   TrailExample,
@@ -7,6 +9,18 @@ import {
   TrendingExample,
   DeliveryExample
 } from '@/components/examples'
+
+const installCommand = 'npx shadcn-vue@latest add https://mapcn-vue-ts.vercel.app/registry.json'
+const copied = ref(false)
+
+const copyToClipboard = async () => {
+  await navigator.clipboard.writeText(installCommand)
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+  }, 2000)
+}
+
 </script>
 
 <template>
@@ -25,15 +39,40 @@ import {
               Built on MapLibre GL, styled with Tailwind, works seamlessly with shadcn-vue.
             </p>
           </div>
+          
+          <!-- Install Command -->
+          <div class="mt-8 animate-fade-up delay-300 w-full max-w-xl">
+            <div class="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+              <div class="flex items-center gap-1.5 px-3 py-2 border-b border-border/50">
+                <span class="size-2.5 rounded-full bg-red-500/40"></span>
+                <span class="size-2.5 rounded-full bg-yellow-500/40"></span>
+                <span class="size-2.5 rounded-full bg-green-500/40"></span>
+              </div>
+              <div class="flex items-center gap-3 px-4 py-3 font-mono text-sm">
+                <span class="text-emerald-500 shrink-0">$</span>
+                <code class="text-foreground/80 truncate flex-1 text-left">{{ installCommand }}</code>
+                <button 
+                  class="text-muted-foreground hover:text-foreground transition-colors"
+                  @click="copyToClipboard"
+                  aria-label="Copy command"
+                >
+                  <Check v-if="copied" class="size-4 text-green-500" />
+                  <Copy v-else class="size-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+
           <div class="space-x-4">
             <RouterLink
-              to="/docs"
+              to="/docs/getting-started"
               class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
             >
               Get Started
             </RouterLink>
             <a
-              href="https://github.com/AnmolSaini16/mapcn"
+              href="https://github.com/AdeoluAdeyemi/mapcn-vue"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -63,7 +102,7 @@ import {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold">Theme-aware</h3>
+            <h3 class="text-xl">Theme-aware</h3>
             <p class="text-sm text-muted-foreground">
               Automatically adapts to light/dark mode
             </p>
@@ -74,7 +113,7 @@ import {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold">Zero config</h3>
+            <h3 class="text-xl">Zero config</h3>
             <p class="text-sm text-muted-foreground">
               Works out of the box with sensible defaults
             </p>
@@ -85,7 +124,7 @@ import {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold">Composable</h3>
+            <h3 class="text-xl">Composable</h3>
             <p class="text-sm text-muted-foreground">
               Build complex map UIs with simple components
             </p>
@@ -97,7 +136,7 @@ import {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold">Full-featured</h3>
+            <h3 class="text-xl">Full-featured</h3>
             <p class="text-sm text-muted-foreground">
               Markers, popups, routes, clusters & more
             </p>

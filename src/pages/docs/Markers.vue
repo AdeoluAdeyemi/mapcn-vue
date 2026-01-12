@@ -7,13 +7,42 @@ import CodeBlock from '@/components/CodeBlock.vue'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
-import { MapPin, Star } from 'lucide-vue-next'
+import { MapPin, Star, Copy, Check } from 'lucide-vue-next'
 
 const tocSections = [
   { id: 'basic-example', title: 'Basic Example' },
   { id: 'rich-popups', title: 'Rich Popups' },
   { id: 'draggable-marker', title: 'Draggable Marker' }
 ]
+
+// Copy state for each code section
+const copiedBasic = ref(false)
+const copiedRich = ref(false)
+const copiedDraggable = ref(false)
+
+const copyBasicExample = async () => {
+  await navigator.clipboard.writeText(basicExampleCode)
+  copiedBasic.value = true
+  setTimeout(() => {
+    copiedBasic.value = false
+  }, 2000)
+}
+
+const copyRichPopups = async () => {
+  await navigator.clipboard.writeText(richPopupsCode)
+  copiedRich.value = true
+  setTimeout(() => {
+    copiedRich.value = false
+  }, 2000)
+}
+
+const copyDraggableMarker = async () => {
+  await navigator.clipboard.writeText(draggableMarkerCode)
+  copiedDraggable.value = true
+  setTimeout(() => {
+    copiedDraggable.value = false
+  }, 2000)
+}
 
 // Basic markers
 const basicMarkers = [
@@ -210,9 +239,17 @@ const handleDrag = (coords: { lng: number; lat: number }) => {
 
         <Card>
           <Tabs default-value="preview">
-            <TabsList class="w-full justify-start border-b rounded-none">
+            <TabsList class="w-full justify-start border-b rounded-none relative">
               <TabsTrigger value="preview">Preview</TabsTrigger>
               <TabsTrigger value="code">Code</TabsTrigger>
+              <button 
+                class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                @click="copyBasicExample"
+                aria-label="Copy code"
+              >
+                <Check v-if="copiedBasic" class="size-3.5 text-green-500" />
+                <Copy v-else class="size-3.5 text-muted-foreground" />
+              </button>
             </TabsList>
             
             <TabsContent value="preview" class="mt-0">
@@ -256,9 +293,17 @@ const handleDrag = (coords: { lng: number; lat: number }) => {
 
         <Card>
           <Tabs default-value="preview">
-            <TabsList class="w-full justify-start border-b rounded-none">
+            <TabsList class="w-full justify-start border-b rounded-none relative">
               <TabsTrigger value="preview">Preview</TabsTrigger>
               <TabsTrigger value="code">Code</TabsTrigger>
+              <button 
+                class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                @click="copyRichPopups"
+                aria-label="Copy code"
+              >
+                <Check v-if="copiedRich" class="size-3.5 text-green-500" />
+                <Copy v-else class="size-3.5 text-muted-foreground" />
+              </button>
             </TabsList>
             
             <TabsContent value="preview" class="mt-0">
@@ -310,9 +355,17 @@ const handleDrag = (coords: { lng: number; lat: number }) => {
 
         <Card>
           <Tabs default-value="preview">
-            <TabsList class="w-full justify-start border-b rounded-none">
+            <TabsList class="w-full justify-start border-b rounded-none relative">
               <TabsTrigger value="preview">Preview</TabsTrigger>
               <TabsTrigger value="code">Code</TabsTrigger>
+              <button 
+                class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                @click="copyDraggableMarker"
+                aria-label="Copy code"
+              >
+                <Check v-if="copiedDraggable" class="size-3.5 text-green-500" />
+                <Copy v-else class="size-3.5 text-muted-foreground" />
+              </button>
             </TabsList>
             
             <TabsContent value="preview" class="mt-0">

@@ -1,14 +1,26 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
 import DocsSidebar from '@/components/DocsSidebar.vue'
 import DocsToc from '@/components/DocsToc.vue'
 import CodeBlock from '@/components/CodeBlock.vue'
 import { Card } from '@/components/ui/card'
 import {Tabs, TabsList, TabsTrigger, TabsContent} from '@/components/ui/tabs'
+import { Copy, Check } from 'lucide-vue-next'
 
 const tocSections = [
   { id: 'basic-map', title: 'Basic Map' }
 ]
+
+const copied = ref(false)
+
+const copyToClipboard = async () => {
+  await navigator.clipboard.writeText(codeExample)
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+  }, 2000)
+}
 
 const codeExample = `<script setup lang="ts">
 import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
@@ -40,9 +52,17 @@ import { Map, MapMarker, MarkerContent, MapControls } from '@/components/map'
 
         <Card>
           <Tabs default-value="preview">
-            <TabsList class="w-full justify-start border-b rounded-lg">
+            <TabsList class="w-full justify-start border-b rounded-lg relative">
               <TabsTrigger value="preview">Preview</TabsTrigger>
               <TabsTrigger value="code">Code</TabsTrigger>
+              <button 
+                class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                @click="copyToClipboard"
+                aria-label="Copy code"
+              >
+                <Check v-if="copied" class="size-3.5 text-green-500" />
+                <Copy v-else class="size-3.5 text-muted-foreground" />
+              </button>
             </TabsList>
             
             <TabsContent value="preview" class="mt-0">

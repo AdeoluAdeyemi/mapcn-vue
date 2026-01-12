@@ -7,6 +7,7 @@ import CodeBlock from '@/components/CodeBlock.vue'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
+import { Copy, Check } from 'lucide-vue-next'
 
 const tocSections = [
   { id: 'using-a-ref', title: 'Using a Ref' },
@@ -14,6 +15,35 @@ const tocSections = [
   { id: 'globe-projection', title: 'Globe Projection' },
   { id: 'extend-to-build', title: 'Extend to Build' }
 ]
+
+// Copy state for each code section
+const copiedRef = ref(false)
+const copiedStyles = ref(false)
+const copiedGlobe = ref(false)
+
+const copyRefExample = async () => {
+  await navigator.clipboard.writeText(refExampleCode)
+  copiedRef.value = true
+  setTimeout(() => {
+    copiedRef.value = false
+  }, 2000)
+}
+
+const copyStylesExample = async () => {
+  await navigator.clipboard.writeText(customStylesCode)
+  copiedStyles.value = true
+  setTimeout(() => {
+    copiedStyles.value = false
+  }, 2000)
+}
+
+const copyGlobeExample = async () => {
+  await navigator.clipboard.writeText(globeProjectionCode)
+  copiedGlobe.value = true
+  setTimeout(() => {
+    copiedGlobe.value = false
+  }, 2000)
+}
 
 // Using a Ref example
 const mapRef = ref()
@@ -113,9 +143,17 @@ import { Map } from '@/components/map'
               
               <Card>
                 <Tabs default-value="preview">
-                  <TabsList class="w-full justify-start border-b rounded-lg">
+                  <TabsList class="w-full justify-start border-b rounded-lg relative">
                     <TabsTrigger value="preview">Preview</TabsTrigger>
                     <TabsTrigger value="code">Code</TabsTrigger>
+                    <button 
+                      class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                      @click="copyRefExample"
+                      aria-label="Copy code"
+                    >
+                      <Check v-if="copiedRef" class="size-3.5 text-green-500" />
+                      <Copy v-else class="size-3.5 text-muted-foreground" />
+                    </button>
                   </TabsList>
                   
                   <TabsContent value="preview" class="mt-0">
@@ -147,9 +185,25 @@ import { Map } from '@/components/map'
               
               <Card>
                 <Tabs default-value="preview">
-                  <TabsList class="w-full justify-start border-b rounded-lg">
+                  <TabsList class="w-full justify-start border-b rounded-lg relative">
                     <TabsTrigger value="preview">Preview</TabsTrigger>
                     <TabsTrigger value="code">Code</TabsTrigger>
+                    <button 
+                      class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                      @click="copyStylesExample"
+                      aria-label="Copy code"
+                    >
+                      <Check v-if="copiedStyles" class="size-3.5 text-green-500" />
+                      <Copy v-else class="size-3.5 text-muted-foreground" />
+                    </button>
+                    <button 
+                      class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                      @click="copyStylesExample"
+                      aria-label="Copy code"
+                    >
+                      <Check v-if="copiedStyles" class="size-3.5 text-green-500" />
+                      <Copy v-else class="size-3.5 text-muted-foreground" />
+                    </button>
                   </TabsList>
                   
                   <TabsContent value="preview" class="mt-0">
@@ -175,9 +229,25 @@ import { Map } from '@/components/map'
               
               <Card>
                 <Tabs default-value="preview">
-                  <TabsList class="w-full justify-start border-b rounded-lg">
+                  <TabsList class="w-full justify-start border-b rounded-lg relative">
                     <TabsTrigger value="preview">Preview</TabsTrigger>
                     <TabsTrigger value="code">Code</TabsTrigger>
+                    <button 
+                      class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                      @click="copyGlobeExample"
+                      aria-label="Copy code"
+                    >
+                      <Check v-if="copiedGlobe" class="size-3.5 text-green-500" />
+                      <Copy v-else class="size-3.5 text-muted-foreground" />
+                    </button>
+                    <button 
+                      class="absolute right-2 p-1.5 rounded hover:bg-muted transition-colors" 
+                      @click="copyGlobeExample"
+                      aria-label="Copy code"
+                    >
+                      <Check v-if="copiedGlobe" class="size-3.5 text-green-500" />
+                      <Copy v-else class="size-3.5 text-muted-foreground" />
+                    </button>
                   </TabsList>
                   
                   <TabsContent value="preview" class="mt-0">
