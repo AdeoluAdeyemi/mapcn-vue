@@ -8,75 +8,63 @@
   "files": [
     {
       "type": "registry:ui",
-      "path": "components/map/Map.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/Map.vue",
+      "target": "components/map/Map.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MapMarker.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapMarker.vue",
+      "target": "components/map/MapMarker.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MarkerContent.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerContent.vue",
+      "target": "components/map/MarkerContent.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MarkerPopup.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerPopup.vue",
+      "target": "components/map/MarkerPopup.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MarkerTooltip.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerTooltip.vue",
+      "target": "components/map/MarkerTooltip.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MarkerLabel.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerLabel.vue",
+      "target": "components/map/MarkerLabel.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MapPopup.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapPopup.vue",
+      "target": "components/map/MapPopup.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MapControls.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapControls.vue",
+      "target": "components/map/MapControls.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MapRoute.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapRoute.vue",
+      "target": "components/map/MapRoute.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MapClusterLayer.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapClusterLayer.vue",
+      "target": "components/map/MapClusterLayer.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/MapStatCard.vue",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapStatCard.vue",
+      "target": "components/map/MapStatCard.vue"
     },
     {
       "type": "registry:ui",
-      "path": "components/map/index.ts",
-      "content": "",
-      "target": ""
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/index.ts",
+      "target": "components/map/index.ts"
     }
   ]
 }
