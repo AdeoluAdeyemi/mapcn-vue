@@ -7,62 +7,62 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/map/Map.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/Map.vue",
       "type": "registry:ui",
       "target": "components/map/Map.vue"
     },
     {
-      "path": "registry/map/MapMarker.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapMarker.vue",
       "type": "registry:ui",
       "target": "components/map/MapMarker.vue"
     },
     {
-      "path": "registry/map/MarkerContent.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerContent.vue",
       "type": "registry:ui",
       "target": "components/map/MarkerContent.vue"
     },
     {
-      "path": "registry/map/MarkerPopup.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerPopup.vue",
       "type": "registry:ui",
       "target": "components/map/MarkerPopup.vue"
     },
     {
-      "path": "registry/map/MarkerTooltip.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerTooltip.vue",
       "type": "registry:ui",
       "target": "components/map/MarkerTooltip.vue"
     },
     {
-      "path": "registry/map/MarkerLabel.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MarkerLabel.vue",
       "type": "registry:ui",
       "target": "components/map/MarkerLabel.vue"
     },
     {
-      "path": "registry/map/MapPopup.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapPopup.vue",
       "type": "registry:ui",
       "target": "components/map/MapPopup.vue"
     },
     {
-      "path": "registry/map/MapControls.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapControls.vue",
       "type": "registry:ui",
       "target": "components/map/MapControls.vue"
     },
     {
-      "path": "registry/map/MapRoute.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapRoute.vue",
       "type": "registry:ui",
       "target": "components/map/MapRoute.vue"
     },
     {
-      "path": "registry/map/MapClusterLayer.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapClusterLayer.vue",
       "type": "registry:ui",
       "target": "components/map/MapClusterLayer.vue"
     },
     {
-      "path": "registry/map/MapStatCard.vue",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/MapStatCard.vue",
       "type": "registry:ui",
       "target": "components/map/MapStatCard.vue"
     },
     {
-      "path": "registry/map/index.ts",
+      "path": "https://mapcn-vue-ts.vercel.app/registry/map/index.ts",
       "type": "registry:ui",
       "target": "components/map/index.ts"
     }
