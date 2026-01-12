@@ -1,77 +1,73 @@
-{
-  "$schema": "https://shadcn-vue.com/schema.json",
-  "name": "mapcn-vue",
-  "homepage": "https://mapcn-vue-ts.vercel.app",
-  "items": [
-    {
-      "name": "map",
-      "type": "registry:ui",
-      "title": "Map",
-      "description": "A MapLibre-powered map component for Vue 3 with markers, popups, tooltips, routes, and controls.",
-      "dependencies": ["maplibre-gl", "@vueuse/core", "lucide-vue-next"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/map/Map.vue",
-          "type": "registry:ui",
-          "target": "components/map/Map.vue"
-        },
-        {
-          "path": "registry/map/MapMarker.vue",
-          "type": "registry:ui",
-          "target": "components/map/MapMarker.vue"
-        },
-        {
-          "path": "registry/map/MarkerContent.vue",
-          "type": "registry:ui",
-          "target": "components/map/MarkerContent.vue"
-        },
-        {
-          "path": "registry/map/MarkerPopup.vue",
-          "type": "registry:ui",
-          "target": "components/map/MarkerPopup.vue"
-        },
-        {
-          "path": "registry/map/MarkerTooltip.vue",
-          "type": "registry:ui",
-          "target": "components/map/MarkerTooltip.vue"
-        },
-        {
-          "path": "registry/map/MarkerLabel.vue",
-          "type": "registry:ui",
-          "target": "components/map/MarkerLabel.vue"
-        },
-        {
-          "path": "registry/map/MapPopup.vue",
-          "type": "registry:ui",
-          "target": "components/map/MapPopup.vue"
-        },
-        {
-          "path": "registry/map/MapControls.vue",
-          "type": "registry:ui",
-          "target": "components/map/MapControls.vue"
-        },
-        {
-          "path": "registry/map/MapRoute.vue",
-          "type": "registry:ui",
-          "target": "components/map/MapRoute.vue"
-        },
-        {
-          "path": "registry/map/MapClusterLayer.vue",
-          "type": "registry:ui",
-          "target": "components/map/MapClusterLayer.vue"
-        },
-        {
-          "path": "registry/map/MapStatCard.vue",
-          "type": "registry:ui",
-          "target": "components/map/MapStatCard.vue"
-        },
-        {
-          "path": "registry/map/index.ts",
-          "type": "registry:ui",
-          "target": "components/map/index.ts"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "name": "map",
+    "type": "registry:ui",
+    "title": "Map",
+    "description": "A MapLibre-powered map component for Vue 3 with markers, popups, tooltips, routes, and controls.",
+    "dependencies": ["maplibre-gl", "@vueuse/core", "lucide-vue-next"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/map/Map.vue",
+        "type": "registry:ui",
+        "target": "components/map/Map.vue"
+      },
+      {
+        "path": "registry/map/MapMarker.vue",
+        "type": "registry:ui",
+        "target": "components/map/MapMarker.vue"
+      },
+      {
+        "path": "registry/map/MarkerContent.vue",
+        "type": "registry:ui",
+        "target": "components/map/MarkerContent.vue"
+      },
+      {
+        "path": "registry/map/MarkerPopup.vue",
+        "type": "registry:ui",
+        "target": "components/map/MarkerPopup.vue"
+      },
+      {
+        "path": "registry/map/MarkerTooltip.vue",
+        "type": "registry:ui",
+        "target": "components/map/MarkerTooltip.vue"
+      },
+      {
+        "path": "registry/map/MarkerLabel.vue",
+        "type": "registry:ui",
+        "target": "components/map/MarkerLabel.vue"
+      },
+      {
+        "path": "registry/map/MapPopup.vue",
+        "type": "registry:ui",
+        "target": "components/map/MapPopup.vue"
+      },
+      {
+        "path": "registry/map/MapControls.vue",
+        "type": "registry:ui",
+        "target": "components/map/MapControls.vue"
+      },
+      {
+        "path": "registry/map/MapRoute.vue",
+        "type": "registry:ui",
+        "target": "components/map/MapRoute.vue"
+      },
+      {
+        "path": "registry/map/MapClusterLayer.vue",
+        "type": "registry:ui",
+        "target": "components/map/MapClusterLayer.vue"
+      },
+      {
+        "path": "registry/map/MapStatCard.vue",
+        "type": "registry:ui",
+        "target": "components/map/MapStatCard.vue"
+      },
+      {
+        "path": "registry/map/index.ts",
+        "type": "registry:ui",
+        "target": "components/map/index.ts"
+      }
+    ]
+  }
+]
+
