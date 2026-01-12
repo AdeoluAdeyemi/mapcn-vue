@@ -22,7 +22,7 @@
 
 - 🎨 **Theme-aware** — Automatically adapts to light/dark mode
 - 🎯 **Zero config** — Works out of the box with sensible defaults
-- 📦 **shadcn/ui compatible** — Uses the same patterns and styling conventions
+- 📦 **shadcn-vue/ui compatible** — Uses the same patterns and styling conventions
 - 🗺️ **MapLibre GL powered** — Full access to MapLibre's powerful mapping capabilities
 - 🧩 **Composable** — Build complex map UIs with simple, declarative components
 - 📍 **Markers & Popups** — Rich marker system with popups, tooltips, and labels
