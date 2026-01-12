@@ -13,7 +13,7 @@
       "target": ""
     },
     {
-      "type": "registry:ui", 
+      "type": "registry:ui",
       "path": "components/map/MapMarker.vue",
       "content": "",
       "target": ""
@@ -80,4 +80,3 @@
     }
   ]
 }
-
