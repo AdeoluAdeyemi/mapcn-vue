@@ -13,7 +13,7 @@ const tocSections = [
   { id: 'usage', title: 'Usage' }
 ]
 
-const installCommand = `npx shadcn-vue@latest add https://mapcn-vue-ts.vercel.app/registry/map.json`
+const installCommand = `npx shadcn-vue@latest add https://mapcn-vue-ts.vercel.app/map.json`
 const copied = ref(false)
 
 const copyToClipboard = async () => {
