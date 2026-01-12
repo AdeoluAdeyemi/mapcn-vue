@@ -251,7 +251,7 @@ const handleDrag = (coords: { lng: number; lat: number }) => {
           <section class="space-y-4 scroll-mt-20" id="rich-popups">
             <h2 class="text-xl font-semibold tracking-tight text-foreground">Rich Popups</h2>
             <div class="text-foreground/80 text-base sm:text-[15px] leading-7 space-y-3 [&_p]:leading-7">
-              <p>Build complex popups with images, ratings, and action buttons using shadcn/ui components.</p>
+              <p>Build complex popups with images, ratings, and action buttons using shadcn-vue components.</p>
             </div>
 
         <Card>

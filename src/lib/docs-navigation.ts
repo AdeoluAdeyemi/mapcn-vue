@@ -9,8 +9,8 @@ import {
   Wrench,
   Settings,
   Layers,
-  LucideIcon,
-} from "lucide-react";
+  type LucideIcon,
+} from "lucide-vue-next";
 
 export interface NavItem {
   title: string;

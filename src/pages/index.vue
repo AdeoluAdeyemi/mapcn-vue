@@ -22,7 +22,7 @@ import {
               Free & open source map components. Zero config, one command setup.
             </p>
             <p class="mx-auto max-w-[700px] text-muted-foreground">
-              Built on MapLibre GL, styled with Tailwind, works seamlessly with shadcn/ui.
+              Built on MapLibre GL, styled with Tailwind, works seamlessly with shadcn-vue.
             </p>
           </div>
           <div class="space-x-4">
